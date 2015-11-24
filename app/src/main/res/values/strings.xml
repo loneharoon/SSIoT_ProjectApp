@@ -7,22 +7,18 @@
     <string name="desc_list_item_icon">Item Icon</string>
     <string-array name="nav_drawer_items">
         <item>Home Screen</item>
-        <item >Your Details</item>
         <item >Settings</item>
         <item>Share with friends</item>
         <item>Send Feedback</item>
         <item >About Us</item>
-        <item >Credits</item>
     </string-array>
 
     <!--navigation icons-->
     <array name="nav_drawer_icons">
         <item>@drawable/home78</item>
-        <item>@drawable/user82</item>
         <item>@drawable/settings</item>
         <item>@drawable/network19</item>
         <item>@drawable/draft1</item>
         <item>@drawable/team2</item>
-        <item>@drawable/credit1</item>
     </array>
 </resources>

@@ -24,14 +24,13 @@ public class HomeFragment extends android.app.Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState) {
-//		setHasOptionsMenu(true);
-//		setRetainInstance(true);
+		setHasOptionsMenu(true);
+		setRetainInstance(true);
 
 		View view= inflater.inflate(R.layout.content_main, container, false);
 
 		mnoise1 = (TextView) view.findViewById(R.id.noiseLevel);
 		mnoise2 = (TextView) view.findViewById(R.id.noiseLevel2);
-		Log.d("Ubidots","is this even working?");
 		new ApiUbidots().execute();
 		return view;
 	}
@@ -42,7 +41,6 @@ public class HomeFragment extends android.app.Fragment {
 		private final String VARIABLE_ID_S2 = "563c8b9e762542212f42d19a"; // Sensor-2
 
 		public ApiUbidots(){
-			Log.d("Ubidots", "constructor initialized");
 		}
 		@Override
 		protected Void doInBackground(Void... params) {
@@ -51,7 +49,6 @@ public class HomeFragment extends android.app.Fragment {
 			Variable noiseLevel = apiClient.getVariable(VARIABLE_ID_S1);
 			Variable noiseLevel2 = apiClient.getVariable(VARIABLE_ID_S2);
 
-Log.d("Ubidots","inside doInBackground");
 			final Value[] val = noiseLevel.getValues();
 			final Value[] val2=noiseLevel2.getValues();
 			String dateString = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSSZ").format(new Date(val[1].getTimestamp()));

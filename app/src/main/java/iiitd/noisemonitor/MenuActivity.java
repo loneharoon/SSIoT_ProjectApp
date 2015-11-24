@@ -52,18 +52,14 @@ public class MenuActivity extends ActionBarActivity {
 		navDrawerItems = new ArrayList<NavDrawerItem>();
 		// Home
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[ 0 ], navMenuIcons.getResourceId(0, -1)));
-		// Your Details
-		navDrawerItems.add(new NavDrawerItem(navMenuTitles[ 1 ], navMenuIcons.getResourceId(1, -1)));
 		// Settings
-		navDrawerItems.add(new NavDrawerItem(navMenuTitles[ 2 ], navMenuIcons.getResourceId(2, -1)));
+		navDrawerItems.add(new NavDrawerItem(navMenuTitles[ 1 ], navMenuIcons.getResourceId(1, -1)));
 		// Share
-		navDrawerItems.add(new NavDrawerItem(navMenuTitles[ 3 ], navMenuIcons.getResourceId(3, -1)));
+		navDrawerItems.add(new NavDrawerItem(navMenuTitles[ 2 ], navMenuIcons.getResourceId(2, -1)));
 		// Feedback
-		navDrawerItems.add(new NavDrawerItem(navMenuTitles[ 4 ], navMenuIcons.getResourceId(4, -1)));
+		navDrawerItems.add(new NavDrawerItem(navMenuTitles[ 3 ], navMenuIcons.getResourceId(3, -1)));
 		// About Us
-		navDrawerItems.add(new NavDrawerItem(navMenuTitles[ 5 ], navMenuIcons.getResourceId(5, -1)));
-		//Credits
-		navDrawerItems.add(new NavDrawerItem(navMenuTitles[ 6 ], navMenuIcons.getResourceId(6, -1)));
+		navDrawerItems.add(new NavDrawerItem(navMenuTitles[ 4 ], navMenuIcons.getResourceId(4, -1)));
 
 		// Recycle the typed array
 		navMenuIcons.recycle();
@@ -76,6 +72,7 @@ public class MenuActivity extends ActionBarActivity {
 		// enabling action bar app icon and behaving it as toggle button
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		getSupportActionBar().setHomeButtonEnabled(true);
+		getSupportActionBar().setHomeAsUpIndicator(R.drawable.menu61);
 
 		mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
 														 R.drawable.menu61, R.string.app_name, R.string.app_name) {
