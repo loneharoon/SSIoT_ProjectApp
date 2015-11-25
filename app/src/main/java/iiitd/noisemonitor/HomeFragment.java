@@ -63,7 +63,7 @@ public class HomeFragment extends android.app.Fragment {
 		return view;
 	}
 
-	private final static int INTERVAL = 1000 * 2; //5 seconds
+	private final static int INTERVAL = 500 * 1; //5 seconds
 	Handler mHandler=new Handler();
 
 	Runnable mHandlerTask = new Runnable()
@@ -98,6 +98,10 @@ public class HomeFragment extends android.app.Fragment {
 											public void run() {
 												mnoise1.setText(String.format("%.5f", val[ 1 ].getValue()) + "dB");
 												mnoise2.setText(String.format("%.5f", val2[ 1 ].getValue()) + "dB");
+
+												if(val[1].getValue()<13.5 || val[1].getValue()>14.2 || val2[1].getValue()<13.5 || val2[1].getValue()>14.2){
+													Toast.makeText(mContext,"WARNING!",Toast.LENGTH_SHORT).show();
+												}
 											}
 										}
 			);
