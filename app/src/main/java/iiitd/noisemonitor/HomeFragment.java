@@ -59,11 +59,11 @@ public class HomeFragment extends android.app.Fragment {
 				Toast.makeText(mContext,"Sensor readings stopped",Toast.LENGTH_SHORT).show();
 			}
 		});
-//		new ApiUbidots().execute();
+		new ApiUbidots().execute();
 		return view;
 	}
 
-	private final static int INTERVAL = 1000 * 5; //5 seconds
+	private final static int INTERVAL = 1000 * 2; //5 seconds
 	Handler mHandler=new Handler();
 
 	Runnable mHandlerTask = new Runnable()
