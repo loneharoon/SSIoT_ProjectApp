@@ -1,0 +1,12 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	tools:context="edu.sarathi.metroCognition.fragments.HomeFragment" >
+
+    <item
+        android:title="Share"
+        android:id="@+id/share"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/network19"
+        android:actionProviderClass="android.widget.ShareActionProvider"/>
+</menu>
