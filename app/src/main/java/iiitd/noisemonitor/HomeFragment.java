@@ -1,9 +1,12 @@
 package iiitd.noisemonitor;
 
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -48,7 +51,10 @@ public class HomeFragment extends android.app.Fragment {
 			public void onClick(View v) {
 				mHandlerTask.run();
 				Toast.makeText(mContext,"Fetching sensor readings now",Toast.LENGTH_SHORT).show();
-			}
+
+//				Buffer buf = new CircularFifoBuffer(4);
+
+				}
 		});
 
 		stop.setOnClickListener(new View.OnClickListener() {
@@ -63,7 +69,7 @@ public class HomeFragment extends android.app.Fragment {
 		return view;
 	}
 
-	private final static int INTERVAL = 500 * 1; //5 seconds
+	private final static int INTERVAL = 1000 * 2; //5 seconds
 	Handler mHandler=new Handler();
 
 	Runnable mHandlerTask = new Runnable()
@@ -76,10 +82,10 @@ public class HomeFragment extends android.app.Fragment {
 	};
 
 	public class ApiUbidots extends AsyncTask<Void, Void, Void> {
-		private final String API_KEY = "b107bfa74890be5625245c25ad261cbeafa1f135";
-		private final String VARIABLE_ID_S1 = "562db59376254264a1508b35"; // Sensor-1
-		private final String VARIABLE_ID_S2 = "563c8b9e762542212f42d19a"; // Sensor-2
-
+		private final String API_KEY = "bd80d5dd9a1f015793fb0ed7686b428b3558e8fb";
+		private final String VARIABLE_ID_S1 = "565d5ab87625421e43701aa6"; // Sensor-1
+		private final String VARIABLE_ID_S2 = "565d5aca7625421ecae0d25f"; // Sensor-2
+		NotificationManager notificationManager =(NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
 		public ApiUbidots(){
 		}
 		@Override
@@ -100,7 +106,18 @@ public class HomeFragment extends android.app.Fragment {
 												mnoise2.setText(String.format("%.5f", val2[ 1 ].getValue()) + "dB");
 
 												if(val[1].getValue()<13.5 || val[1].getValue()>14.2 || val2[1].getValue()<13.5 || val2[1].getValue()>14.2){
-													Toast.makeText(mContext,"WARNING!",Toast.LENGTH_SHORT).show();
+//													Toast.makeText(mContext,"WARNING!",Toast.LENGTH_SHORT).show();
+													NotificationCompat.Builder builder =
+															new NotificationCompat.Builder(mContext)
+																	.setSmallIcon(R.drawable.user82)
+																	.setContentTitle("Loud noise")
+																	.setContentText("Warning! You are being surrounded by high noise levels")
+																	.setAutoCancel(true)
+																	.setStyle(new NotificationCompat.BigTextStyle())
+																	.setDefaults(Notification.DEFAULT_SOUND)
+																	.setWhen(System.currentTimeMillis());
+
+													notificationManager.notify(1111, builder.build());
 												}
 											}
 										}
